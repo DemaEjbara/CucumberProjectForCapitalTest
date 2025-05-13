@@ -19,7 +19,7 @@ public class locatorUtil {
         }
     }
   public static By GetLocator(String key){
-        String locator=properties.getProperty(key);
+        String locator=properties.getProperty(key + ".locator");
         if (locator==null || locator.trim().isEmpty()){
             throw new IllegalArgumentException("no locator found for th key :"+key);
         }
