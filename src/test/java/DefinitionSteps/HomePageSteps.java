@@ -1,8 +1,10 @@
 package DefinitionSteps;
 import HelpersUtils.locatorUtil;
+import Pages.HandleModalDialogTest;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -11,10 +13,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 public class HomePageSteps {
-
     WebDriverWait wait;
+    HandleModalDialogTest modalObj;
     public HomePageSteps(){
         wait=new WebDriverWait(DriverInitialization.driver, Duration.ofSeconds(10));
+        modalObj=new HandleModalDialogTest(DriverInitialization.driver);
     }
     @Given("user should redirect to {string}")
     public void user_should_redirect_to(String expectedUrl) {
@@ -37,18 +40,19 @@ public class HomePageSteps {
         Assert.assertEquals("no found the this text",expText,actualText);
     }
     @Given("click on the {string}")
-    public void click_on_the_burger_menu_on_the_left_side(String buttonName) {
+    public void click_on_the_button(String buttonName)  {
         By locator= locatorUtil.GetLocator(buttonName);
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(locator));
         button.click();
-        //        WebElement burgerMenu=DriverInitialization.driver.findElement(By.id("Icon_ionic-ios-menu"));
-//        wait.until(ExpectedConditions.visibilityOf(burgerMenu)).click();
     }
     @Then("the navigation sidebar is shown")
     public void the_navigation_sidebar_is_shown() {
         WebElement sideBarWindow=DriverInitialization.driver.findElement(By.xpath("//nav[contains(@class, 'menu--header')]"));
         wait.until(ExpectedConditions.visibilityOf(sideBarWindow)).isDisplayed();
-
+    }
+    @When("show Modal Dialog on Home Page Screen")
+    public void showModalDialogOnHomePageScreen() {
+        modalObj.verifyModalDialogBox();
     }
 
 }
