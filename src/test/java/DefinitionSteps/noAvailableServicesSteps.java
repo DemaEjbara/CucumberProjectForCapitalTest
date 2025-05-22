@@ -15,10 +15,10 @@ public class noAvailableServicesSteps {
     DisabledPages disabledPages;
     WebDriverWait wait;
     public noAvailableServicesSteps(){
-     disabledPages=new DisabledPages(DriverInitialization.driver);
-     wait=new WebDriverWait(DriverInitialization.driver, Duration.ofSeconds(20));
+        disabledPages=new DisabledPages(DriverInitialization.driver);
+        wait=new WebDriverWait(DriverInitialization.driver, Duration.ofSeconds(20));
     }
-    @Then("redirect to page explains no available for Capital Online service")
+    @Then("redirect to a page indicating that the Capital Online service is not available")
     public void no_available_service_for_capital_online_option(){
         try{
             wait.until(ExpectedConditions.visibilityOfElementLocated(DisabledPages.textErrorLocator));

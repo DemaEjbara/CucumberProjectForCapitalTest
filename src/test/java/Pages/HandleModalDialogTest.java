@@ -21,7 +21,5 @@ public class HandleModalDialogTest {
         String actualMessageDialog=modalContentBody.getText();
         String expectedMessageDialog="Download the Capital Bank app today and enjoy managing your accounts in a simple, secure and convenient way at any time and from anywhere!";
         Assert.assertEquals(expectedMessageDialog,actualMessageDialog);
-//        WebElement modalCloseButton=modalContainer.findElement(By.xpath("//div[@class='modal__close']"));
-//        modalCloseButton.click();
     }
 }
